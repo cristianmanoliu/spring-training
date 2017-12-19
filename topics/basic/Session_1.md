@@ -4,34 +4,33 @@
 
 ## What is Spring?
 
-Spring is an open source framework that was created to address the complexity of enterprise application development.
+Spring is an open source framework that was created to *address the complexity of enterprise application development.*
 It empowered old Java objects (POJOs) with powers previously only available using EJB and other enterprise Java specifications.
-Over time, EJB started offering a simple POJO oriented programming model of its own. 
-Now EJB employs ideas such as DI and AOP arguably inspired by the success of Spring.
+Over time, EJB started offering a simple POJO oriented programming model of its own. Now EJB employs ideas such as DI and AOP arguably inspired by the success of Spring.
 
 Classic EJB example:
 http://www-inf.int-evry.fr/cours/CORBA_gb/Site/course/lectureNotes/EJB-example-hello.pdf
 
 To back up its attack on Java complexity, Spring employs four key strategies:
-1. Lightweight and minimally invasive development with POJOs
+1. *Lightweight and minimally invasive development with POJOs*
 Spring avoids (as much as possible) littering your application code with its API. 
 Spring almost never forces you to implement Spring-specific interface or extends a Spring-specific class.
 Finger pointed towards: EJBHome, SessionBean, EntityBean, MessageBean, etc.
 
-2. Loose coupling through DI and interface orientation
+2. *Loose coupling through DI and interface orientation*
 Traditionally, each object is responsible for obtaining its own references to the objects it collaborates with (its dependencies). 
 This can lead to highly coupled and hard-to-test code.
 
-3. Declarative programming through aspects
+3. *Declarative programming through aspects*
 AOP is a technique that promotes separation of concerns in a software system.
 
-4. Eliminating boilerplate code with aspects and templates
+4. *Eliminating boilerplate code with aspects and templates*
 Spring seeks to eliminate boilerplate code by encapsulating it in templates. 
 Spring’s JdbcTemplate makes it possible to perform database operations without all the ceremony required by traditionally JDBC.
 
 ## ApplicationContext, BeanFactory
 
-Application Context is Spring's advanced container. Similar to BeanFactory it can load bean definitions, wire beans together, and dispense beans upon request. 
+*Application Context is Spring's advanced container*. Similar to BeanFactory it can load bean definitions, wire beans together, and dispense beans upon request. 
 Additionally, it adds more enterprise-specific functionality such as the ability to resolve textual messages from a properties file and the ability to publish application events to interested event listeners.
 Application Context stores a BeanFactory, MessageSource, EventMulticaster, ConversionService and other context-specific components, and a lot of runtime caches.
 
