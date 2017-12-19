@@ -1,34 +1,73 @@
 # Introduction
+
+## Why are we here?
+
 ## What is Spring?
+
 Spring is an open source framework that was created to address the complexity of enterprise application development.
 It empowered old Java objects (POJOs) with powers previously only available using EJB and other enterprise Java specifications.
-Over time, EJB started offering a simple POJO oriented programming model of its own. Now EJB employs ideas such as DI and AOP< arguably inspired by the success of Spring.
+Over time, EJB started offering a simple POJO oriented programming model of its own. 
+Now EJB employs ideas such as DI and AOP arguably inspired by the success of Spring.
 
 Classic EJB example:
 http://www-inf.int-evry.fr/cours/CORBA_gb/Site/course/lectureNotes/EJB-example-hello.pdf
 
 To back up its attack on Java complexity, Spring employs four key strategies:
 1. Lightweight and minimally invasive development with POJOs
-Spring avoids (as much as possible) littering your application code with its API. Spring almost never forces you to implement Spring-specific interface or extends a Spring-specific class.
+Spring avoids (as much as possible) littering your application code with its API. 
+Spring almost never forces you to implement Spring-specific interface or extends a Spring-specific class.
+Finger pointed towards: EJBHome, SessionBean, EntityBean, MessageBean, etc.
+
 2. Loose coupling through DI and interface orientation
-Traditionally, each object is responsible for obtaining its own references to the objects it collaborates with (its dependencies). This can lead to highly coupled and hard-to-test code.
+Traditionally, each object is responsible for obtaining its own references to the objects it collaborates with (its dependencies). 
+This can lead to highly coupled and hard-to-test code.
+
 3. Declarative programming through aspects
 AOP is a technique that promotes separation of concerns in a software system.
-4. Eliminating boilerplate code with aspects and templates
-Spring seeks to eliminate boilerplate code by encapsulating it in templates. Spring’s JdbcTemplate makes it possible to perform database operations without all the ceremony required by traditionally JDBC.
 
-How does spring handle DI internally? (@Autowired, @Qualifier) – Annotation post processor
+4. Eliminating boilerplate code with aspects and templates
+Spring seeks to eliminate boilerplate code by encapsulating it in templates. 
+Spring’s JdbcTemplate makes it possible to perform database operations without all the ceremony required by traditionally JDBC.
+
+## ApplicationContext, BeanFactory
+
+Application Context is Spring's advanced container. Similar to BeanFactory it can load bean definitions, wire beans together, and dispense beans upon request. 
+Additionally, it adds more enterprise-specific functionality such as the ability to resolve textual messages from a properties file and the ability to publish application events to interested event listeners.
+Application Context stores a BeanFactory, MessageSource, EventMulticaster, ConversionService and other context-specific components, and a lot of runtime caches.
+
+vs BeanFactory - It is generally recommended to use ApplicationContext over BeanFactory, but BeanFactory can be used for lightweight applications like mobile devices.
+
+Post processor is a heart of Spring Context.
+AutowiredAnnotationBeanPostProcessor
 
 # Hands-on exercise
+
 ## Requirements
+
 1. Define a MessagingService interface with a single method sendMessage(String message).
 2. Define a property key/value in application.properties with following possible values (e.g. messagingSystem=JMS; messagingSystem=KAFKA).
 3. Define a custom service that has an reference to a KafkaMessagingService or JmsMessagingService based on above property value
 - Bean has to have the scope prototype.
 4. Exercise must be implemented using TDD approach
 
+# Topics during Hands-on exercise
+- What happens when an application context is built?
+BeanFactory is initialized, Properties are loaded into Spring Environment (environment of current application - profiles/properties), Event Listeners are called (if any).
+- How does spring handle DI internally?
+(@Autowired, @Qualifier) – Annotation post processor
+- Autowired default behavior
+byType
+- Qualifier
+byName
+- Field vs Constructor vs Setter Injection
+Field injection should be avoided! It cannot be used outside DI container (unit testing), and it doesn't prevent you from creating invalid object (without mandatory dependencies set - NPE alert)
+Constructor should be used to inject mandatory dependencies - validate that null are not received with assertion.
+Setter should be used to inject optional dependencies.
+
 # Take-away (Recap)
+
 ## Spring
+
 In a nutshell: Spring is a lightweight dependency injection and aspect oriented container and framework.
 - Lightweight: a couple of MB
 - DI
@@ -41,12 +80,13 @@ Application objects should not be responsible (or even aware) of system concerns
 - Framework: Configure and compose complex applications from simpler components. (transaction management, persistence framework integration, etc.) (spring-jms, spring-tx, spring-jdbc, …)
 
 ## Key annotations
+
 @Configuration – indicates that a class declares one or more @Bean methods that may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
 @Component – Indicates that annotated class is a spring-component. Such classes are considered candidates for auto-detection when using annotated-based configuration and class path scanning.
 -	@Repository – it makes the unchecked exceptions (Thrown from DAO methods) eligible for translation into Spring DataAccessException.
--	@Service – no additional behaviour over @Component
+-	@Service – no additional behavior over @Component
 -	@Controller – makes it possible to use @RequestMapping at method level as well.
-@Autowired – Marks a constructor, field, setter method as to be autowired by Spring Container.
+@Autowired – Marks a constructor, field, setter method as to be @Autowired by Spring Container.
 @Qualifier – Used together with Autowired when multiple beans of a type exists in the context, and you want to specify exactly which one you want to be injected by Spring container.
 @Bean – Indicates that a method produces a bean that needs to be managed by Spring container.
 @PropertySource – To be used in conjunction with @Configuration classes. Convenient and declarative mechanism for adding a PropertySource to Spring’s Environment.
