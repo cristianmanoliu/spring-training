@@ -3,6 +3,7 @@ package io.cards.spring;
 
 import io.cards.spring.messaging.MessagingFacade;
 import io.cards.spring.messaging.service.MessagingService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -21,7 +22,12 @@ public class MessagingServiceTest {
     private MessagingService messagingService;
 
     @InjectMocks
-    private MessagingFacade facade = new MessagingFacade();
+    private MessagingFacade facade;
+
+    @Before
+    public void before() {
+        facade = new MessagingFacade(messagingService);
+    }
 
     @Test
     public void testSendMessage() {
