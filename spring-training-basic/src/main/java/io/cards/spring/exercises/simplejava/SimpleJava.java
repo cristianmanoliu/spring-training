@@ -1,7 +1,7 @@
-package io.cards.spring.simplejava;
+package io.cards.spring.exercises.simplejava;
 
-import io.cards.spring.simplejava.service.MessagingService;
-import io.cards.spring.simplejava.service.MessagingServiceFactory;
+import io.cards.spring.exercises.simplejava.service.MessagingService;
+import io.cards.spring.exercises.simplejava.service.MessagingServiceFactory;
 
 public class SimpleJava {
     public static void main(String[] args) {

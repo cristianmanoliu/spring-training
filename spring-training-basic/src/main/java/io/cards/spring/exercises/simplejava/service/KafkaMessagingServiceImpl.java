@@ -1,4 +1,4 @@
-package io.cards.spring.simplejava.service;
+package io.cards.spring.exercises.simplejava.service;
 
 public class KafkaMessagingServiceImpl implements MessagingService {
     private static final KafkaMessagingServiceImpl INSTANCE = new KafkaMessagingServiceImpl();

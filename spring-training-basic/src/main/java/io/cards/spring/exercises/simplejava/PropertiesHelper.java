@@ -1,4 +1,4 @@
-package io.cards.spring.simplejava;
+package io.cards.spring.exercises.simplejava;
 
 import java.util.ResourceBundle;
 

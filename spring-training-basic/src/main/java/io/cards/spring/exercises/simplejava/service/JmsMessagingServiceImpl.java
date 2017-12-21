@@ -1,4 +1,4 @@
-package io.cards.spring.simplejava.service;
+package io.cards.spring.exercises.simplejava.service;
 
 public class JmsMessagingServiceImpl implements MessagingService {
     private static final JmsMessagingServiceImpl INSTANCE = new JmsMessagingServiceImpl();
