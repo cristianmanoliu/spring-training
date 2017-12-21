@@ -22,7 +22,7 @@ public class MessagingFacade {
   }
 
   private MessagingService getMessagingService() {
-    MessagingServiceFactory messagingServiceFactory = new MessagingServiceFactory();
+    MessagingServiceFactory  messagingServiceFactory= new MessagingServiceFactory();
     LOGGER.info("Got messagingServiceFactory: {}", messagingServiceFactory);
     return messagingServiceFactory
         .getMessagingService(applicationProperties.getMessagingType());

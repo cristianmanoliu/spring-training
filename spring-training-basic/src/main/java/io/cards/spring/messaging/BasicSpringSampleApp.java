@@ -12,6 +12,7 @@ public class BasicSpringSampleApp {
   private void run() {
     ApplicationContext context = new AnnotationConfigApplicationContext(
         MessagingConfiguration.class);
+
     MessagingFacade facade = context.getBean(MessagingFacade.class);
     facade.send("hi");
   }

@@ -1,7 +1,5 @@
 package io.cards.spring.messaging;
 
-import io.cards.spring.messaging.MessagingProperties;
-import io.cards.spring.messaging.MessagingType;
 import io.cards.spring.messaging.service.MessagingService;
 import io.cards.spring.messaging.service.impl.JmsMessagingService;
 import io.cards.spring.messaging.service.impl.KafkaMessagingService;
@@ -25,5 +23,4 @@ public class MessagingConfiguration {
         throw new UnsupportedOperationException("Unsupported messaging type " + type);
     }
   }
-
 }

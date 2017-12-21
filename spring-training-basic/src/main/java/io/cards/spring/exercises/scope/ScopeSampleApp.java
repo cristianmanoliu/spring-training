@@ -1,4 +1,4 @@
-package io.cards.spring.exercises;
+package io.cards.spring.exercises.scope;
 
 import io.cards.spring.exercises.model.CustomBean;
 import org.slf4j.Logger;
@@ -49,8 +49,8 @@ class ScopeSampleConfiguration {
   }
 
   @Bean
-  @Scope(BeanDefinition.SCOPE_SINGLETON)
+  //@Scope(BeanDefinition.SCOPE_SINGLETON)
   public CustomBean singletonCustomBean() {
-    return new CustomBean(1);
+    return new CustomBean(2);
   }
 }

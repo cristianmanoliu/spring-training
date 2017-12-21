@@ -2,16 +2,16 @@ package io.cards.spring.messaging;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @PropertySource("messaging.properties")
 public class MessagingProperties {
 
-    @Value("${messaging.type}")
-    private MessagingType messagingType;
+  @Value("${messaging.type}")
+  private MessagingType messagingType;
 
-    public MessagingType getMessagingType() {
-        return messagingType;
-    }
+  public MessagingType getMessagingType() {
+    return messagingType;
+  }
 }

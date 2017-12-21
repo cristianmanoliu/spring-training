@@ -1,4 +1,4 @@
-package io.cards.spring.exercises;
+package io.cards.spring.exercises.lazy;
 
 import io.cards.spring.exercises.model.CustomBean;
 import org.slf4j.Logger;
@@ -22,6 +22,7 @@ public class PrimaryLazySampleApp {
   private void run() {
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(
         PrimaryLazySampleConfiguration.class);
+
     CustomBean customBean = applicationContext.getBean(CustomBean.class);
     LOGGER.info("Got customBean: {}", customBean);
   }
@@ -31,16 +32,16 @@ public class PrimaryLazySampleApp {
 @Configuration
 class PrimaryLazySampleConfiguration {
 
+  @Primary
   @Bean
-  @Lazy
-  public CustomBean prototypeCustomBean() {
+  public CustomBean firstBean() {
     return new CustomBean(1);
   }
 
-  @Primary
+
   @Bean
   @Lazy
-  public CustomBean singletonCustomBean() {
+  public CustomBean secondBean() {
     return new CustomBean(2);
   }
 }
