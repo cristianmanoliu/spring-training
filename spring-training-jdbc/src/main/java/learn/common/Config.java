@@ -16,7 +16,7 @@ public class Config {
     DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
-                .addScript("script-learn1.sql")
+                .addScript("src/main/resources/script-learn1.sql")
                 .setName(UUID.randomUUID().toString() + ";TRACE_LEVEL_FIlE=4")
                 .build();
     }

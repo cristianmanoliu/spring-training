@@ -11,7 +11,7 @@ public class Connection {
     private String host;
 
     public Connection() {
-        this.host = this.toString() + ".local";
+        this.host = this.hashCode() + ".local";
     }
 
     public String getHost() {
