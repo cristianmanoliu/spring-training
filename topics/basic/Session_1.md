@@ -62,6 +62,9 @@ BeanFactory is initialized, Properties are loaded into Spring Environment (envir
 
 - Field vs Constructor vs Setter Injection. Field injection should be avoided! It cannot be used outside DI container (unit testing), and it doesn't prevent you from creating invalid object (without mandatory dependencies set - NPE alert). Constructor should be used to inject mandatory dependencies - validate that null are not received with assertion. Setter should be used to inject optional dependencies.
 
+- JSR 330 vs Spring
+https://www.dineshonjava.com/jsr-330-annotations-in-spring/ 
+
 # Take-away (Recap)
 
 ## Spring

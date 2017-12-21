@@ -1,5 +1,6 @@
 package io.cards.spring;
 
+import io.cards.spring.messaging.MessagingConfiguration;
 import io.cards.spring.messaging.MessagingFacade;
 import io.cards.spring.messaging.service.MessagingService;
 import io.cards.spring.messaging.service.impl.JmsMessagingService;
