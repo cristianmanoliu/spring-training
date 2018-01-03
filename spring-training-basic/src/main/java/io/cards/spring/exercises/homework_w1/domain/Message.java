@@ -7,21 +7,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class SimplePojo {
+public class Message {
 
-  private PrimaryKey primaryKey;
+  private MessageId messageId;
 
-  @Autowired
-  public SimplePojo(PrimaryKey primaryKey) {
-    this.primaryKey = primaryKey;
+  public Message(MessageId messageId) {
+    this.messageId = messageId;
   }
 
-  public PrimaryKey getPrimaryKey() {
-    return primaryKey;
+  public MessageId getMessageId() {
+    return messageId;
   }
 
   @Override
   public String toString() {
-    return primaryKey.getId();
+    return messageId.getId();
   }
 }

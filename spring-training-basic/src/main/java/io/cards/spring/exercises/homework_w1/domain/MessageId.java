@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-public class PrimaryKey {
+public class MessageId {
 
   private String id = UUID.randomUUID().toString();
 
