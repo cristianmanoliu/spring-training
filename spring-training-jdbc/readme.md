@@ -21,13 +21,13 @@ Add the following dependencies in your pom.xml
 </dependencies>
 ```
 
-Create the Launcher class that will ([example here](../src/main/java/learn/Launcher.java))
+Create the Launcher class that will ([example here](src/main/java/learn/Launcher.java))
 
 - start the application context
 - start the h2 console
 - execute the application processing logic
 
-Create the common configuration that we will use throughout the application ([example here](../src/main/java/learn/common/Config.java)):
+Create the common configuration that we will use throughout the application ([example here](src/main/java/learn/common/Config.java)):
 
 ```java
 @Configuration
@@ -51,7 +51,7 @@ public class Config {
 For the embedded database, I used `EmbeddedDatabaseBuilder` class from spring JDBC, and configure it to work with **H2** database engine. Other possibilities are **HSQL** and **DERBY**.
 
 > Notice:
-> - the script used to initialize the database (`.addScript("script-learn1.sql")`) with some dummy data in it. To generate data for yourself, you can use http://www.mockaroo.com/ . See [the file](../src/main/resources/script-learn1.sql)
+> - the script used to initialize the database (`.addScript("script-learn1.sql")`) with some dummy data in it. To generate data for yourself, you can use http://www.mockaroo.com/ . See [the file](src/main/resources/script-learn1.sql)
 > - the `.generateUniqueName(true)` flag that will ensure us a new database will be created every time we start the application.
 
 Also the `JdbcTemplate` bean that will be used to make database operations.
@@ -60,16 +60,16 @@ Also the `JdbcTemplate` bean that will be used to make database operations.
 
 ### Simple database queries 
 
-See [Learn1Config example](../src/main/java/learn/learn1/Learn1Config.java)
+See [Learn1Config example](src/main/java/learn/learn1/Learn1Config.java)
 
 When running the application with `learn1` parameter, we will print the number of rows from the LOG_DATA table.
 
 ### Using parameters in query
 
-See [Learn2Config example](../src/main/java/learn/learn2/Learn2Config.java)
+See [Learn2Config example](src/main/java/learn/learn2/Learn2Config.java)
 When running the application with `learn2` parameter, we will print the name of all the users online on 7/11/2017.
 
-See [Learn3Config example](../src/main/java/learn/learn3/Learn3Config.java)
+See [Learn3Config example](src/main/java/learn/learn3/Learn3Config.java)
 When running the application with `learn3` parameter, we will print the name of all the users online on 30/11/2017 and 01/12/2017.
 
 **Difference between `NamedParameterJdbcTemplate` and `JdbcTemplate`**
@@ -85,7 +85,7 @@ Notes:
 
 ### The update operation
 
-See [Learn4Config example](../src/main/java/learn/learn4/Learn4Config.java)
+See [Learn4Config example](src/main/java/learn/learn4/Learn4Config.java)
 
 When selecting from a database, we have the option to use a `RowMapper` in order to map the result directly to an Java object:
 
@@ -110,7 +110,7 @@ template.update("INSERT INTO benefits (full_name, percent) VALUES (?, ?)", count
 
 When you have to update/insert multiple items, it is faster to execute them in a batch operations, instead of adding them one at a time. For this, JdbcTemplate offers batchUpdate methods:
 
-See [Learn5Config example](../src/main/java/learn/learn5/Learn5Config.java)
+See [Learn5Config example](src/main/java/learn/learn5/Learn5Config.java)
 
 The following method will prepare one batch, and will execute the batch operation in order to add all items at once. The return of batchUpdate operation is an array with the number of rows affected by each item in the list
 
